@@ -13,9 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Panggil AdminSeeder untuk membuat akun admin
         $this->call([
             AdminSeeder::class,
+            StudentSeeder::class,
+            TeacherSeeder::class,
         ]);
 
         // User::factory(10)->create();

@@ -21,346 +21,295 @@
 @endsection
 
 @section('dashboard-content')
-<!-- Welcome Section -->
-<div class="card bg-primary text-white mb-4">
-    <div class="card-body py-4">
-        <div class="d-flex justify-content-between align-items-center">
-            <div>
-                <h5 class="fw-bold mb-1">Selamat Datang, Administrator!</h5>
-                <p class="mb-0">Berikut adalah ringkasan data SMA Anda per tanggal {{ date('d F Y') }}</p>
+<!-- Welcome Section with Motto -->
+<div class="card border-0 shadow-sm mb-4 overflow-hidden">
+    <div class="card-body p-0">
+        <div class="row g-0">
+            <div class="col-md-8 p-4">
+                <div class="d-flex flex-column h-100 justify-content-center">
+                    <h4 class="fw-bold mb-2">Selamat Datang di Sistem Informasi Manajemen SMA</h4>
+                    <p class="text-muted mb-3">Rangkuman data per tanggal {{ date('d F Y') }}</p>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary rounded-circle p-2 me-3">
+                            <i class="bx bxs-quote-alt-left text-white"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-semibold">"Tut Wuri Handayani"</h6>
+                            <small class="text-muted">Di belakang memberi dorongan</small>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <button class="btn btn-sm btn-primary me-2">
+                            <i class="bx bx-refresh me-1"></i> Refresh Data
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary">
+                            <i class="bx bx-cog me-1"></i> Pengaturan
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="d-none d-md-block">
-                <img src="{{ asset('https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css') }}" alt="Illustration" style="height: 80px;">
+            <div class="col-md-4 bg-primary d-flex align-items-center justify-content-center p-4">
+                <div class="text-center text-white">
+                    <img src="https://ui-avatars.com/api/?name=SMA&background=0066b3&color=fff&bold=true&size=80" alt="Logo SMA" class="img-fluid rounded mb-3" style="border: 5px solid rgba(255,255,255,0.2)">
+                    <h5 class="mb-1">SMA Negeri</h5>
+                    <p class="mb-0 small opacity-75">Pendidikan Berkualitas untuk Masa Depan Cemerlang</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Overview Cards -->
+<!-- Stats Cards -->
+<div class="row g-4 mb-4">
+    <!-- Students Card -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box bg-primary bg-opacity-10 rounded-3 p-3 me-3">
+                        <i class="bx bxs-user-detail fs-1 text-primary"></i>
+                    </div>
+                    <div>
+                        <h6 class="text-muted mb-1">Total Siswa</h6>
+                        <h3 class="mb-0 fw-bold">{{ $totalStudents }}</h3>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a href="{{ route('students.index') }}" class="btn btn-sm btn-outline-primary w-100">
+                        <i class="bx bx-show me-1"></i> Lihat Data Siswa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Teachers Card -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box bg-info bg-opacity-10 rounded-3 p-3 me-3">
+                        <i class="bx bxs-user-badge fs-1 text-info"></i>
+                    </div>
+                    <div>
+                        <h6 class="text-muted mb-1">Total Guru</h6>
+                        <h3 class="mb-0 fw-bold">{{ $totalTeachers }}</h3>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a href="{{ route('teachers.index') }}" class="btn btn-sm btn-outline-info w-100">
+                        <i class="bx bx-show me-1"></i> Lihat Data Guru
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Classes Card -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box bg-success bg-opacity-10 rounded-3 p-3 me-3">
+                        <i class="bx bxs-school fs-1 text-success"></i>
+                    </div>
+                    <div>
+                        <h6 class="text-muted mb-1">Total Kelas</h6>
+                        <h3 class="mb-0 fw-bold">18</h3>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a href="#" class="btn btn-sm btn-outline-success w-100">
+                        <i class="bx bx-show me-1"></i> Lihat Data Kelas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Events Card -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box bg-warning bg-opacity-10 rounded-3 p-3 me-3">
+                        <i class="bx bxs-calendar-event fs-1 text-warning"></i>
+                    </div>
+                    <div>
+                        <h6 class="text-muted mb-1">Acara Bulan Ini</h6>
+                        <h3 class="mb-0 fw-bold">3</h3>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a href="#" class="btn btn-sm btn-outline-warning w-100">
+                        <i class="bx bx-show me-1"></i> Lihat Jadwal
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Access Section -->
 <div class="row">
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card dashboard-card h-100 border-start border-5 border-primary">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="text-muted fw-semibold mb-2">Total Siswa</h6>
-                        <div class="d-flex align-items-center">
-                            <h3 class="fw-bold mb-0 me-2">850</h3>
-                            <span class="badge bg-success-subtle text-success small rounded-pill px-2 py-1">
-                                <i class='bx bx-up-arrow-alt'></i> 5.27%
-                            </span>
-                        </div>
-                        <small class="text-muted">Dari bulan lalu</small>
-                    </div>
-                    <div class="icon-box bg-primary-subtle text-primary rounded-4">
-                        <i class="bx bxs-user-detail"></i>
-                    </div>
-                </div>
-                <div class="progress mt-3" style="height: 6px;">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+    <div class="col-12">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 border-bottom">
+                <h5 class="card-title mb-0">Menu Utama</h5>
             </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card dashboard-card h-100 border-start border-5 border-success">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="text-muted fw-semibold mb-2">Total Guru</h6>
-                        <div class="d-flex align-items-center">
-                            <h3 class="fw-bold mb-0 me-2">45</h3>
-                            <span class="badge bg-success-subtle text-success small rounded-pill px-2 py-1">
-                                <i class='bx bx-up-arrow-alt'></i> 2.5%
-                            </span>
-                        </div>
-                        <small class="text-muted">Dari bulan lalu</small>
+            <div class="card-body p-4">
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <a href="{{ route('students.index') }}" class="text-decoration-none">
+                            <div class="card h-100 bg-light border-0 hover-shadow">
+                                <div class="card-body text-center py-4">
+                                    <i class="bx bxs-user-detail fs-1 text-primary mb-3"></i>
+                                    <h6 class="mb-1 text-dark">Data Siswa</h6>
+                                    <p class="small text-muted mb-0">Kelola data siswa</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="icon-box bg-success-subtle text-success rounded-4">
-                        <i class="bx bxs-user-badge"></i>
+                    <div class="col-lg-3 col-md-6">
+                        <a href="{{ route('students.create') }}" class="text-decoration-none">
+                            <div class="card h-100 bg-light border-0 hover-shadow">
+                                <div class="card-body text-center py-4">
+                                    <i class="bx bx-user-plus fs-1 text-success mb-3"></i>
+                                    <h6 class="mb-1 text-dark">Pendaftaran Siswa</h6>
+                                    <p class="small text-muted mb-0">Tambah siswa baru</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="progress mt-3" style="height: 6px;">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card dashboard-card h-100 border-start border-5 border-warning">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="text-muted fw-semibold mb-2">Kehadiran</h6>
-                        <div class="d-flex align-items-center">
-                            <h3 class="fw-bold mb-0 me-2">92%</h3>
-                            <span class="badge bg-success-subtle text-success small rounded-pill px-2 py-1">
-                                <i class='bx bx-up-arrow-alt'></i> 1.2%
-                            </span>
-                        </div>
-                        <small class="text-muted">Dari bulan lalu</small>
+                    <div class="col-lg-3 col-md-6">
+                        <a href="{{ route('teachers.index') }}" class="text-decoration-none">
+                            <div class="card h-100 bg-light border-0 hover-shadow">
+                                <div class="card-body text-center py-4">
+                                    <i class="bx bxs-user-badge fs-1 text-info mb-3"></i>
+                                    <h6 class="mb-1 text-dark">Data Guru</h6>
+                                    <p class="small text-muted mb-0">Kelola data guru</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="icon-box bg-warning-subtle text-warning rounded-4">
-                        <i class="bx bxs-calendar-check"></i>
+                    <div class="col-lg-3 col-md-6">
+                        <a href="{{ route('teachers.create') }}" class="text-decoration-none">
+                            <div class="card h-100 bg-light border-0 hover-shadow">
+                                <div class="card-body text-center py-4">
+                                    <i class="bx bx-user-plus fs-1 text-warning mb-3"></i>
+                                    <h6 class="mb-1 text-dark">Pendaftaran Guru</h6>
+                                    <p class="small text-muted mb-0">Tambah guru baru</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="progress mt-3" style="height: 6px;">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 92%;" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card dashboard-card h-100 border-start border-5 border-danger">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="text-muted fw-semibold mb-2">Pembayaran SPP</h6>
-                        <div class="d-flex align-items-center">
-                            <h3 class="fw-bold mb-0 me-2">Rp120jt</h3>
-                            <span class="badge bg-success-subtle text-success small rounded-pill px-2 py-1">
-                                <i class='bx bx-up-arrow-alt'></i> 12%
-                            </span>
-                        </div>
-                        <small class="text-muted">Dari bulan lalu</small>
-                    </div>
-                    <div class="icon-box bg-danger-subtle text-danger rounded-4">
-                        <i class="bx bx-money"></i>
-                    </div>
-                </div>
-                <div class="progress mt-3" style="height: 6px;">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Charts Row -->
-<div class="row mb-4">
-    <div class="col-lg-8 mb-4 mb-lg-0">
-        <div class="card h-100">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="card-title">Perkembangan Akademik</h5>
-                <div>
-                    <select class="form-select form-select-sm" id="academicPeriod">
-                        <option value="year">Tahun Ini</option>
-                        <option value="lastYear">Tahun Lalu</option>
-                        <option value="allTime">Semua Waktu</option>
-                    </select>
-                </div>
+<!-- Add school calendar and announcement section -->
+<div class="row g-4 mt-4">
+    <div class="col-md-7">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">Kalender Akademik</h5>
+                <button class="btn btn-sm btn-outline-primary">Lihat Semua</button>
             </div>
-            <div class="card-body">
-                <div id="academicChartContainer" style="height: 300px;"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="card h-100">
-            <div class="card-header">
-                <h5 class="card-title">Distribusi Siswa</h5>
-            </div>
-            <div class="card-body d-flex flex-column justify-content-center">
-                <div id="studentDistributionChart" style="height: 300px;"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Recent Activities & Upcoming Events -->
-<div class="row">
-    <div class="col-lg-8 mb-4">
-        <div class="card h-100">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="card-title">Aktivitas Terbaru</h5>
-                <button class="btn btn-sm btn-outline-primary d-flex align-items-center">
-                    <i class="bx bx-refresh me-1"></i> Refresh
-                </button>
-            </div>
-            <div class="card-body p-0">
+            <div class="card-body p-4">
                 <div class="list-group list-group-flush">
-                    <div class="list-group-item p-3 border-start border-4 border-primary">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1 fw-semibold">Rapat Guru dan Wali Murid</h6>
-                            <small class="text-muted">3 jam yang lalu</small>
+                    <div class="list-group-item px-0 py-3 d-flex border-top-0">
+                        <div class="me-3 text-center">
+                            <div class="badge bg-primary text-white fw-bold py-2 px-3">APR<br>20</div>
                         </div>
-                        <p class="mb-1">Rapat evaluasi kinerja akademik semester ganjil telah selesai dilaksanakan.</p>
-                        <div class="d-flex align-items-center">
-                            <div class="avatar-xs me-2">
-                                <span class="avatar-title rounded-circle bg-primary-subtle text-primary">
-                                    KS
-                                </span>
-                            </div>
-                            <small class="text-muted">Kepala Sekolah</small>
+                        <div>
+                            <h6 class="mb-1">Ujian Akhir Semester</h6>
+                            <p class="mb-1 small text-muted">Ujian akan berlangsung untuk seluruh siswa kelas X-XII</p>
+                            <span class="badge bg-light text-dark">08:00 - 12:00</span>
                         </div>
                     </div>
-                    <div class="list-group-item p-3 border-start border-4 border-success">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1 fw-semibold">Pembayaran SPP Kelas XII</h6>
-                            <small class="text-muted">5 jam yang lalu</small>
+                    <div class="list-group-item px-0 py-3 d-flex">
+                        <div class="me-3 text-center">
+                            <div class="badge bg-info text-white fw-bold py-2 px-3">MEI<br>2</div>
                         </div>
-                        <p class="mb-1">85% siswa kelas XII telah melunasi pembayaran SPP bulan ini.</p>
-                        <div class="d-flex align-items-center">
-                            <div class="avatar-xs me-2">
-                                <span class="avatar-title rounded-circle bg-success-subtle text-success">
-                                    BD
-                                </span>
-                            </div>
-                            <small class="text-muted">Bendahara</small>
+                        <div>
+                            <h6 class="mb-1">Rapat Orang Tua Siswa</h6>
+                            <p class="mb-1 small text-muted">Pembahasan hasil ujian dan persiapan kenaikan kelas</p>
+                            <span class="badge bg-light text-dark">09:00 - 11:00</span>
                         </div>
                     </div>
-                    <div class="list-group-item p-3 border-start border-4 border-info">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1 fw-semibold">Penambahan Peralatan Lab Biologi</h6>
-                            <small class="text-muted">1 hari yang lalu</small>
+                    <div class="list-group-item px-0 py-3 d-flex">
+                        <div class="me-3 text-center">
+                            <div class="badge bg-success text-white fw-bold py-2 px-3">MEI<br>15</div>
                         </div>
-                        <p class="mb-1">10 unit mikroskop baru telah ditambahkan ke lab biologi.</p>
-                        <div class="d-flex align-items-center">
-                            <div class="avatar-xs me-2">
-                                <span class="avatar-title rounded-circle bg-info-subtle text-info">
-                                    KL
-                                </span>
-                            </div>
-                            <small class="text-muted">Kepala Lab</small>
-                        </div>
-                    </div>
-                    <div class="list-group-item p-3 border-start border-4 border-warning">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1 fw-semibold">Penyerahan Rapor Semester</h6>
-                            <small class="text-muted">2 hari yang lalu</small>
-                        </div>
-                        <p class="mb-1">Penyerahan rapor semester ganjil telah selesai dilaksanakan dengan lancar.</p>
-                        <div class="d-flex align-items-center">
-                            <div class="avatar-xs me-2">
-                                <span class="avatar-title rounded-circle bg-warning-subtle text-warning">
-                                    WK
-                                </span>
-                            </div>
-                            <small class="text-muted">Waka Kurikulum</small>
+                        <div>
+                            <h6 class="mb-1">Pengumuman Kelulusan</h6>
+                            <p class="mb-1 small text-muted">Pengumuman kelulusan untuk siswa kelas XII</p>
+                            <span class="badge bg-light text-dark">10:00 - 12:00</span>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-footer text-center bg-transparent border-top-0">
-                <a href="#" class="btn btn-sm btn-link text-decoration-none">Lihat Semua Aktivitas</a>
             </div>
         </div>
     </div>
-    <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="card-title">Jadwal Mendatang</h5>
-                <button class="btn btn-sm btn-outline-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#addEventModal">
-                    <i class="bx bx-plus me-1"></i> Tambah
-                </button>
+    <div class="col-md-5">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">Pengumuman Terkini</h5>
+                <button class="btn btn-sm btn-outline-primary">Semua</button>
             </div>
-            <div class="card-body p-0">
-                <div class="list-group list-group-flush">
-                    <div class="list-group-item p-3">
-                        <div class="d-flex align-items-center">
-                            <div class="bg-primary rounded-4 text-white p-2 me-3 text-center" style="width: 50px; height: 50px;">
-                                <div class="mb-0 small">APR</div>
-                                <div class="fw-bold">15</div>
-                            </div>
-                            <div>
-                                <h6 class="mb-1 fw-semibold">Ujian Tengah Semester</h6>
-                                <small class="text-muted d-flex align-items-center">
-                                    <i class="bx bx-time-five me-1"></i> 07:30 - 15:00
-                                </small>
-                                <small class="text-muted d-flex align-items-center">
-                                    <i class="bx bx-map me-1"></i> Semua Ruang Kelas
-                                </small>
-                            </div>
-                        </div>
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center p-3 bg-primary bg-opacity-10 rounded mb-3">
+                    <div class="icon-box bg-primary rounded-circle p-2 me-3">
+                        <i class="bx bx-news text-white"></i>
                     </div>
-                    <div class="list-group-item p-3">
-                        <div class="d-flex align-items-center">
-                            <div class="bg-success rounded-4 text-white p-2 me-3 text-center" style="width: 50px; height: 50px;">
-                                <div class="mb-0 small">APR</div>
-                                <div class="fw-bold">20</div>
-                            </div>
-                            <div>
-                                <h6 class="mb-1 fw-semibold">Lomba Debat Bahasa Inggris</h6>
-                                <small class="text-muted d-flex align-items-center">
-                                    <i class="bx bx-time-five me-1"></i> 09:00 - 12:00
-                                </small>
-                                <small class="text-muted d-flex align-items-center">
-                                    <i class="bx bx-map me-1"></i> Aula Sekolah
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group-item p-3">
-                        <div class="d-flex align-items-center">
-                            <div class="bg-danger rounded-4 text-white p-2 me-3 text-center" style="width: 50px; height: 50px;">
-                                <div class="mb-0 small">APR</div>
-                                <div class="fw-bold">25</div>
-                            </div>
-                            <div>
-                                <h6 class="mb-1 fw-semibold">Rapat Koordinasi Guru</h6>
-                                <small class="text-muted d-flex align-items-center">
-                                    <i class="bx bx-time-five me-1"></i> 13:00 - 15:00
-                                </small>
-                                <small class="text-muted d-flex align-items-center">
-                                    <i class="bx bx-map me-1"></i> Ruang Rapat
-                                </small>
-                            </div>
-                        </div>
+                    <div>
+                        <h6 class="mb-1">Penerimaan Siswa Baru</h6>
+                        <p class="mb-0 small">Pendaftaran dibuka mulai 1 Juni 2024</p>
                     </div>
                 </div>
-            </div>
-            <div class="card-footer text-center bg-transparent border-top-0">
-                <a href="#" class="btn btn-sm btn-link text-decoration-none">Lihat Semua Jadwal</a>
+                <div class="d-flex align-items-center p-3 bg-info bg-opacity-10 rounded mb-3">
+                    <div class="icon-box bg-info rounded-circle p-2 me-3">
+                        <i class="bx bx-calendar-check text-white"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-1">Libur Hari Raya</h6>
+                        <p class="mb-0 small">Sekolah libur tanggal 5-10 Mei 2024</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center p-3 bg-success bg-opacity-10 rounded">
+                    <div class="icon-box bg-success rounded-circle p-2 me-3">
+                        <i class="bx bx-trophy text-white"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-1">Prestasi Olimpiade Sains</h6>
+                        <p class="mb-0 small">Selamat kepada Budi Santoso yang meraih juara 1</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
 
-<!-- Add Event Modal -->
-<div class="modal fade" id="addEventModal" tabindex="-1" aria-labelledby="addEventModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addEventModalLabel">Tambah Jadwal Baru</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="eventTitle" class="form-label">Judul Kegiatan</label>
-                        <input type="text" class="form-control" id="eventTitle" placeholder="Masukkan judul kegiatan">
-                    </div>
-                    <div class="mb-3">
-                        <label for="eventDate" class="form-label">Tanggal</label>
-                        <input type="text" class="form-control datepicker" id="eventDate" placeholder="Pilih tanggal">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="eventStartTime" class="form-label">Waktu Mulai</label>
-                            <input type="time" class="form-control" id="eventStartTime">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="eventEndTime" class="form-label">Waktu Selesai</label>
-                            <input type="time" class="form-control" id="eventEndTime">
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="eventLocation" class="form-label">Lokasi</label>
-                        <input type="text" class="form-control" id="eventLocation" placeholder="Masukkan lokasi">
-                    </div>
-                    <div class="mb-3">
-                        <label for="eventDescription" class="form-label">Deskripsi</label>
-                        <textarea class="form-control" id="eventDescription" rows="3" placeholder="Masukkan deskripsi kegiatan"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary">Simpan</button>
-            </div>
-        </div>
-    </div>
-</div>
+@section('styles')
+<style>
+    .hover-shadow {
+        transition: all 0.3s ease;
+    }
+    .hover-shadow:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .icon-box {
+        width: 55px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
 @endsection
 
 @section('scripts')
@@ -421,7 +370,7 @@
                         format: 'MM'
                     },
                 },
-                colors: ['#4361ee', '#6f42c1'],
+                colors: ['#0066b3', '#1e88e5'],
                 fill: {
                     type: 'gradient',
                     gradient: {
@@ -440,8 +389,10 @@
                 }
             };
             
-            const academicChart = new ApexCharts(document.querySelector("#academicChartContainer"), academicOptions);
-            academicChart.render();
+            if (document.querySelector("#academicChartContainer")) {
+                const academicChart = new ApexCharts(document.querySelector("#academicChartContainer"), academicOptions);
+                academicChart.render();
+            }
             
             // Student Distribution Chart
             const distributionOptions = {
@@ -452,7 +403,7 @@
                     fontFamily: 'Inter, sans-serif',
                 },
                 labels: ['Kelas X', 'Kelas XI', 'Kelas XII'],
-                colors: ['#4361ee', '#6f42c1', '#fd7e14'],
+                colors: ['#0066b3', '#1e88e5', '#64b5f6'],
                 plotOptions: {
                     pie: {
                         donut: {
@@ -491,18 +442,20 @@
                 }
             };
             
-            const distributionChart = new ApexCharts(document.querySelector("#studentDistributionChart"), distributionOptions);
-            distributionChart.render();
+            if (document.querySelector("#studentDistributionChart")) {
+                const distributionChart = new ApexCharts(document.querySelector("#studentDistributionChart"), distributionOptions);
+                distributionChart.render();
+            }
         }
         
         // Show notifications with SweetAlert2
-        document.querySelector('.btn-outline-primary').addEventListener('click', function() {
+        document.querySelector('.btn-primary').addEventListener('click', function() {
             if (typeof Swal !== 'undefined') {
                 Swal.fire({
                     title: 'Data Diperbarui!',
                     text: 'Data dashboard telah diperbarui.',
                     icon: 'success',
-                    confirmButtonColor: '#4361ee',
+                    confirmButtonColor: '#0066b3',
                     confirmButtonText: 'Oke'
                 });
             }

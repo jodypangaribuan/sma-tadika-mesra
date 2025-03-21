@@ -19,15 +19,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
         :root {
-            --primary-color: #4361ee;
-            --secondary-color: #3f37c9;
-            --success-color: #2a9d8f;
-            --info-color: #4cc9f0;
-            --warning-color: #f8961e;
-            --danger-color: #e63946;
+            --primary-color: #0066b3;
+            --secondary-color: #1e88e5;
+            --success-color: #4caf50;
+            --info-color: #00bcd4;
+            --warning-color: #ff9800;
+            --danger-color: #f44336;
             --light-color: #f8f9fa;
             --dark-color: #212529;
-            --bs-body-bg: #f9fafb;
+            --bs-body-bg: #f5f7fa;
         }
 
         body {
@@ -40,7 +40,7 @@
         /* Sidebar styling */
         .sidebar {
             min-height: 100vh;
-            background: linear-gradient(to bottom, #3a0ca3, #3f37c9);
+            background: linear-gradient(to bottom, #0066b3, #1e88e5);
             color: white;
             transition: all 0.3s;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -78,9 +78,9 @@
 
         /* Card styling */
         .card {
-            border-radius: 12px;
+            border-radius: 8px;
             border: none;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
             transition: all 0.3s;
             background-color: white;
         }
@@ -102,14 +102,14 @@
         }
 
         .dashboard-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
         }
 
         .dashboard-card .icon-box {
             width: 60px;
             height: 60px;
-            border-radius: 50%;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -124,7 +124,7 @@
 
         /* Button styling */
         .btn {
-            border-radius: 8px;
+            border-radius: 6px;
             padding: 0.5rem 1.25rem;
             font-weight: 500;
             transition: all 0.2s;
@@ -146,28 +146,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #4cc9f0 0%, #3a0ca3 100%);
+            background: linear-gradient(135deg, #607d8b 0%, #2d4059 100%);
         }
 
         .login-card {
             max-width: 420px;
             width: 100%;
             padding: 40px;
-            border-radius: 16px;
+            border-radius: 10px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
         }
 
         .login-card .form-control {
-            border-radius: 8px;
+            border-radius: 6px;
             padding: 0.6rem 1rem;
             background-color: rgba(255, 255, 255, 0.9);
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .input-group-text {
-            border-radius: 8px 0 0 8px;
+            border-radius: 6px 0 0 6px;
             background-color: rgba(255, 255, 255, 0.9);
             border: 1px solid rgba(0, 0, 0, 0.1);
             border-right: none;
@@ -175,13 +175,13 @@
 
         /* Form controls */
         .form-control {
-            border-radius: 8px;
+            border-radius: 6px;
             padding: 0.6rem 1rem;
         }
 
         .form-control:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.15);
+            box-shadow: 0 0 0 0.25rem rgba(45, 64, 89, 0.15);
         }
 
         /* Custom scrollbar */
@@ -208,12 +208,12 @@
             width: 100%;
             margin-bottom: 1rem;
             color: #212529;
-            border-radius: 8px;
+            border-radius: 6px;
             overflow: hidden;
         }
 
         .table thead th {
-            background-color: rgba(0, 0, 0, 0.03);
+            background-color: rgba(45, 64, 89, 0.05);
             font-weight: 600;
             border-bottom: none;
         }
